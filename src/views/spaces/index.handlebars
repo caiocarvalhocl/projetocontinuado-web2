@@ -1,0 +1,20 @@
+<h1>Espaços</h1>
+<form action="/spaces/create" method="POST">
+  <input type="text" name="name" placeholder="Nome" required>
+  <select name="type" required>
+    <option value="sala">Sala</option>
+    <option value="auditorio">Auditório</option>
+    <option value="quadra">Quadra</option>
+    <option value="coworking">Coworking</option>
+  </select>
+  <input type="number" name="capacity" placeholder="Capacidade" required>
+  <input type="number" name="manager_id" placeholder="ID do Gerente" required>
+  <button type="submit">Criar Espaço</button>
+</form>
+
+<ul>
+  {{#each spaces}}
+    <li>{{this.name}} ({{this.type}}) - Capacidade: {{this.capacity}} | Gerente: {{this.User.name}}</li>
+  {{/each}}
+</ul>
+<a href="/users">Voltar para Usuários</a>

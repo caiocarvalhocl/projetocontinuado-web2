@@ -1,0 +1,16 @@
+<h1>Todos os Usuários</h1>
+<ul>
+  {{#each users}}
+    <li>
+      {{this.name}} - {{this.role}}<br />
+      
+      <form action="/users/delete/{{this.id}}" method="POST" style="display:inline;">
+        <button type="submit">Excluir</button>
+      </form>
+
+      <a href="/users/update/{{this.id}}">Editar</a>
+    </li>
+    <hr />
+  {{/each}}
+</ul>
+

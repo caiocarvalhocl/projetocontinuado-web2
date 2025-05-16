@@ -1,0 +1,13 @@
+
+<h1>Criar Recurso</h1>
+<form method="POST" action="/resources/create">
+  <input type="text" name="name" placeholder="Nome" required />
+  <textarea name="description" placeholder="Descrição"></textarea>
+  <select name="spaceId" required>
+    {{#each spaces}}
+      <option value="{{this.id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+  <button type="submit">Criar</button>
+</form>
+<a href="/resources">Voltar</a>
