@@ -2,11 +2,26 @@ import express from "express";
 import { router } from "./routes/routes.js";
 import { sequelize } from "./config/SQLDatabase.js";
 import { engine } from "express-handlebars";
+import session from "express-session";
+import cookieParser from "cookie-parser";
 import path from "path";
 import { fileURLToPath } from "url";
 import "./models/index.js";
 
 const app = express();
+
+app.use(cookieParser());
+
+app.use(
+  session({
+    secret: "123",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 30 * 60 * 1000,
+    },
+  }),
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

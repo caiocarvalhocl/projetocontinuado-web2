@@ -26,7 +26,13 @@ class UserController {
 
       if (!user) throw new Error("Problem with user login controller");
 
-      res.render("users/login", { user });
+      req.session.user = {
+        id: user.id,
+        name: user.name,
+        role: user.role,
+      };
+
+      res.render("home");
     } catch (error) {
       return res.status(400).json({ message: error.message });
     }
@@ -92,6 +98,11 @@ class UserController {
     } catch (error) {
       return res.status(400).json({ message: error.message });
     }
+  }
+
+  async logout(req, res) {
+    req.session.destroy();
+    res.redirect("/users/login");
   }
 }
 

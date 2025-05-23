@@ -16,4 +16,5 @@ userRoutes.post("/update/:id", (req, res) => userController.update(req, res));
 userRoutes.get("/edit/:id", (req, res) => userController.getEditPage(req, res));
 userRoutes.post("/delete/:id", (req, res) => userController.delete(req, res));
 
+userRoutes.get("/logout", (req, res) => userController.logout(req, res));
 export { userRoutes };
