@@ -93,6 +93,7 @@ class UserController {
       if (!user) return res.status(404).json({ message: "User not found" });
 
       await user.destroy();
+      req.session.destroy();
 
       res.redirect("/users");
     } catch (error) {
